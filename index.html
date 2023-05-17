@@ -7,12 +7,18 @@
   <title>Camaras de fotodetección</title>
   <link rel="stylesheet" href="estilos.css">
   <script>
+    const data = {
+      // Aquí puedes proporcionar los datos que deseas enviar
+      nombre: 'John Doe',
+      edad: 30,
+      // ...
+    };
     fetch('https://camarasdefotodeteccion.com/proxy', {
       method: 'GET', // o 'POST', 'PUT', etc., según el tipo de solicitud que deseas enviar
       headers: {
         'Content-Type': 'application/json', // ajusta el tipo de contenido según tus necesidades
       },
-      body: JSON.stringify("algún dato"), // si necesitas enviar datos en el cuerpo de la solicitud, descomenta esta línea y ajusta "data" según tus necesidades
+      body: JSON.stringify(data), // si necesitas enviar datos en el cuerpo de la solicitud, descomenta esta línea y ajusta "data" según tus necesidades
     })
       .then(response => response.json())
       .then(data => {
