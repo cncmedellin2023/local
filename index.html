@@ -13,17 +13,14 @@
       edad: 30,
       // ...
     };
-    fetch('https://camarasdefotodeteccion.com/proxy', {
-      method: 'POST', // o 'POST', 'PUT', etc., según el tipo de solicitud que deseas enviar
-      headers: {
-        'Content-Type': 'application/json', // ajusta el tipo de contenido según tus necesidades
-      },
-      body: JSON.stringify(data), // si necesitas enviar datos en el cuerpo de la solicitud, descomenta esta línea y ajusta "data" según tus necesidades
-    })
+    // Convierte los datos en una cadena de consulta
+    const queryParams = new URLSearchParams(data).toString();
+
+    fetch(`https://camarasdefotodeteccion.com/proxy?${queryParams}`)
       .then(response => response.json())
-      .then(data => {
+      .then(responseData => {
         // Aquí puedes manejar la respuesta del servidor proxy
-        console.log(data);
+        console.log(responseData);
       })
       .catch(error => {
         // Aquí puedes manejar errores en la solicitud
