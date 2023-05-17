@@ -14,18 +14,23 @@
       // ...
     };
     // Convierte los datos en una cadena de consulta
-    const queryParams = new URLSearchParams(data).toString();
+    fetch('https://tu-servidor-proxy.com/proxy', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+    .then(response => response.json())
+    .then(responseData => {
+      // Aquí puedes manejar la respuesta del servidor proxy
+      console.log(responseData);
+    })
+    .catch(error => {
+      // Aquí puedes manejar errores en la solicitud
+      console.error(error);
+    });
 
-    fetch(`https://camarasdefotodeteccion.com/proxy?${queryParams}`)
-      .then(response => response.json())
-      .then(responseData => {
-        // Aquí puedes manejar la respuesta del servidor proxy
-        console.log(responseData);
-      })
-      .catch(error => {
-        // Aquí puedes manejar errores en la solicitud
-        console.error(error);
-      });
   </script>
 </head>
 <body>
