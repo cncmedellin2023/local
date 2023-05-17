@@ -48,7 +48,7 @@
       data: {"user_lat":la, "user_lon":lo},
       success : function(data){  console.log(data)
         //document.querySelector('#btn1').click();
-        ciudad = data;
+        ciudad = data; console.log(ciudad)
         if(ciudad == "ko"){
            x.innerHTML = "<p id='mensaje1'>No hay cámaras de fotodetección cerca</p>";
         } else {
