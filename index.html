@@ -19,48 +19,4 @@
     <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
   </form>
 </body>
-<script>
-  var x = document.getElementById("m");
-  var y = document.getElementById("activ");
-  const options = {}
-
-  const audio = new Audio("notification.mp3");
-  function addClick() {
-     audio.play();
-     y.innerHTML = "<p style='text-align: left; margin-left: 10px'>Cuando estés aproximadamente a 300 metros de una cámara de fotodetección recibirás una alerta</p>";
-     var boton = document.getElementById("btn1");
-     boton.textContent = "Notificaciones Activas";
-  }
-  
-  var noSleep = new NoSleep(); 
-  noSleep.enable();
-  
-  navigator.geolocation.watchPosition(({coords}) => {
-      lat =  coords.latitude    
-      lon =  coords.longitude 
-      fun(lat,lon)
-  }, console.error, options);	   
-  	
-  var fun = function(la, lo){
-    $.ajax({
-      url: 'https://camarasdefotodeteccion.com/getcity',
-      method : 'POST',
-      data: {"user_lat":la, "user_lon":lo},
-      success : function(data){  console.log(data)
-        //document.querySelector('#btn1').click();
-        ciudad = data; console.log(ciudad)
-        if(ciudad == "ko"){
-           x.innerHTML = "<p id='mensaje1'>No hay cámaras de fotodetección cerca</p>";
-        } else {
-           document.querySelector('#btn1').click();
-           x.innerHTML = "<p id='mensaje2'>Estás a 100 metros de la cámara de fotodetección de " + ciudad + "</p>";
-        }
-        // x.innerHTML= data;
-      }, error: function(err){console.log('Failed');} 
-    });
-  }
-  
-  
- 
-</script>	
 </html>
