@@ -6,6 +6,24 @@
     <script src="NoSleep.min.js"></script>
   <title>Camaras de fotodetección</title>
   <link rel="stylesheet" href="estilos.css">
+  <script>
+    fetch('https://camarasdefotodeteccion.com/proxy', {
+      method: 'GET', // o 'POST', 'PUT', etc., según el tipo de solicitud que deseas enviar
+      headers: {
+        'Content-Type': 'application/json', // ajusta el tipo de contenido según tus necesidades
+      },
+      // body: JSON.stringify(data), // si necesitas enviar datos en el cuerpo de la solicitud, descomenta esta línea y ajusta "data" según tus necesidades
+    })
+      .then(response => response.json())
+      .then(data => {
+        // Aquí puedes manejar la respuesta del servidor proxy
+        console.log(data);
+      })
+      .catch(error => {
+        // Aquí puedes manejar errores en la solicitud
+        console.error(error);
+      });
+  </script>
 </head>
 <body>
   <h3 style="margin-left: 12px; margin-right: 12px;">Anticipa las cámaras de fotodetección en el Valle de Aburrá</h3>
