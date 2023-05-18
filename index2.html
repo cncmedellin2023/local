@@ -91,10 +91,7 @@
       [ 6.201839078946828, -75.58304583414692 , "texto" ],
       ]
        
-    map = L.map('map').setView([lat, lon], 17);
-         tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 30, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-         }).addTo(map);
+    
     
     //Loop through the markers array
     for (var i=0; i<markers.length; i++) {
@@ -110,6 +107,10 @@
      navigator.geolocation.watchPosition(({coords}) => {
          lat = coords.latitude
          lon = coords.longitude
+         map = L.map('map').setView([lat, lon], 17);
+           tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              maxZoom: 30, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+           }).addTo(map);
          fun(lat, lon)
      }, console.error, options);
      
