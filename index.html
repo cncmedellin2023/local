@@ -14,12 +14,12 @@
       // ...
     };
     // Convierte los datos en una cadena de consulta
-    fetch('https://camarasdefotodeteccion.com/proxy', {
+    fetch('https://camarasdefotodeteccion.com/endpoint', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(data),
+    // body: JSON.stringify(data),
   })
     .then(response => response.json())
     .then(responseData => {
